@@ -1,0 +1,32 @@
+package Biblioteca;
+
+import java.time.LocalDate;
+
+public class Usuario {
+    private String nombre;
+    private String email;
+    private String numeroSocio;
+    private LocalDate fechaRegistro;
+    private boolean sancionado;
+    private LocalDate fechaFinSancion;
+
+    public Usuario(String nombre, String email, String numeroSocio, LocalDate fechaRegistro) throws UsuarioInvalidoException{
+        this.nombre=nombre;
+        if (email.matches(".+@.+\\..+")){
+            this.email=email;
+        }
+        else{
+            throw new UsuarioInvalidoException("Email mal introducido, introduce los caracteres @ y .");
+
+        }
+
+        if (numeroSocio.matches("^SOC[0-9]{5}")){
+            this.numeroSocio=numeroSocio;
+        }
+        else{
+            throw new UsuarioInvalidoException("Numero de socio mal introducido el formato es: SOC + 5 números");
+        }
+
+        this.fechaRegistro=fechaRegistro;
+    }
+}
