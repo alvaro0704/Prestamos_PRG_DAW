@@ -7,17 +7,17 @@ public class Usuario {
     private String email;
     private String numeroSocio;
     private LocalDate fechaRegistro;
-    private boolean sancionado;
+    private boolean sancionado=false;
     private LocalDate fechaFinSancion;
 
     public Usuario(String nombre, String email, String numeroSocio, LocalDate fechaRegistro) throws UsuarioInvalidoException{
         this.nombre=nombre;
+
         if (email.matches(".+@.+\\..+")){
             this.email=email;
         }
         else{
             throw new UsuarioInvalidoException("Email mal introducido, introduce los caracteres @ y .");
-
         }
 
         if (numeroSocio.matches("^SOC[0-9]{5}")){
@@ -26,7 +26,37 @@ public class Usuario {
         else{
             throw new UsuarioInvalidoException("Numero de socio mal introducido el formato es: SOC + 5 números");
         }
-
         this.fechaRegistro=fechaRegistro;
     }
+
+    public void sancionar(int diasSancion, LocalDate fechaInicioSancion){
+        fechaFinSancion= fechaInicioSancion.plusDays(diasSancion);
+        sancionado=true;
+    }
+
+    public void levantarSancion(){
+        sancionado=false;
+        fechaFinSancion=null;
+    }
+
+    public boolean estaSacionado(){
+        if(sancionado==true){
+            System.out.println("EL usuario esta sancionado");
+            return true;
+        }
+        else{
+            System.out.println("El usuario no esta sancionado");
+            return false;
+        }
+
+    }
+
+    @Override
+    public String toString(){
+        return "Nombre: " + nombre + " Email: " + email + " Numero de socio: " + numeroSocio + " fecha de registro: " + fechaRegistro + " Esta sancionado? " + sancionado;
+    }
+
+
+
+
 }
