@@ -53,7 +53,7 @@ public class Usuario {
 
     @Override
     public String toString(){
-        return "Nombre: " + nombre + " Email: " + email + " Numero de socio: " + numeroSocio + " fecha de registro: " + fechaRegistro + " Esta sancionado? " + sancionado;
+        return "Nombre: " + nombre + " Email: " + email + " Numero de socio: " + numeroSocio + " fecha de registro: " + fechaRegistro;
     }
 
 
