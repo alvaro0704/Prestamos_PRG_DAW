@@ -41,6 +41,7 @@ public class Prestamo {
     }
 
     public void registrarDevolucion(LocalDate fechaDevolucionReal) throws PrestamoInvalidoException{
+        this.fechaDevolucionReal = fechaDevolucionReal;
         if(fechaDevolucionReal==null || fechaDevolucionReal.isBefore(fechaPrestamo)){
             throw new PrestamoInvalidoException("El valor de la fecha no puede estar vacio ni ser anterior a la fecha de prestamo");
         }
@@ -57,6 +58,22 @@ public class Prestamo {
         else{
             return Integer.parseInt("Dias de retraso: " + intervalo);
         }
+    }
+
+    public boolean estaRetrasado(){
+        if(fechaDevolucionReal.isAfter(fechaDevolucionPrevista) == true){
+            System.out.println("XXXXX El libro ya tiene retraso XXXXX");
+            return true;
+        }
+        else{
+            System.out.println("EL libro no tiene retraso");
+            return false;
+        }
+    }
+
+    @Override
+    public String toString(){
+        return "Codigo del libro: " + codigoLibro + " titulo del libro: " + tituloLibro + " socio: " + usuario + " fecha del prestamo: " + fechaPrestamo + " fecha de devolucion prevista: " + fechaDevolucionPrevista;
     }
 
 
