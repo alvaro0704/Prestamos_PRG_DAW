@@ -20,7 +20,7 @@ public class MainPrueba {
 
             System.out.println("---------------------------------------------------");
 
-            try{
+           /* try{
                 Usuario u2 = new Usuario("Lara","Lara@gmail.com", "SOC45876", LocalDate.of(2010,5,13));
 
                 Prestamo p1 = new Prestamo("LIB0011", u2, "Hunger Games", LocalDate.of(2026,2,18));
@@ -37,6 +37,21 @@ public class MainPrueba {
                 System.out.println(PIE.getMessage());
             }
 
+            */
+
+            try{
+                Usuario u3 = new Usuario("Maria","Maria@gmail.com","SOC34567", LocalDate.of(2026,5,20));
+                GestorBiblioteca g1 = new GestorBiblioteca();
+
+                g1.registrarUsuario(u3);
+                
+                g1.registrarUsuario(u3);
+
+
+            }
+            catch (UsuarioRepetidoException URE){
+                System.out.println(URE.getMessage());
+            }
 
 
 

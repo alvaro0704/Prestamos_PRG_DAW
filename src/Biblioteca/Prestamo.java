@@ -40,6 +40,57 @@ public class Prestamo {
         fechaDevolucionPrevista= fechaPrestamo.plusDays(14);
     }
 
+
+    public String getCodigoLibro() {
+        return codigoLibro;
+    }
+
+
+    public void setCodigoLibro(String codigoLibro) {
+        this.codigoLibro = codigoLibro;
+    }
+
+
+    public LocalDate getFechaDevolucionReal() {
+        return fechaDevolucionReal;
+    }
+
+
+    public void setFechaDevolucionReal(LocalDate fechaDevolucionReal) {
+        this.fechaDevolucionReal = fechaDevolucionReal;
+    }
+
+
+    public LocalDate getFechaActual() {
+        return fechaActual;
+    }
+
+
+    public void setFechaActual(LocalDate fechaActual) {
+        this.fechaActual = fechaActual;
+    }
+
+
+    public LocalDate getFechaDevolucionPrevista() {
+        return fechaDevolucionPrevista;
+    }
+
+
+    public void setFechaDevolucionPrevista(LocalDate fechaDevolucionPrevista) {
+        this.fechaDevolucionPrevista = fechaDevolucionPrevista;
+    }
+
+
+    public LocalDate getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+
+    public void setFechaPrestamo(LocalDate fechaPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
+    }
+
+
     public void registrarDevolucion(LocalDate fechaDevolucionReal) throws PrestamoInvalidoException{
         this.fechaDevolucionReal = fechaDevolucionReal;
         if(fechaDevolucionReal==null || fechaDevolucionReal.isBefore(fechaPrestamo)){
