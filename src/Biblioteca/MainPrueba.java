@@ -44,8 +44,8 @@ public class MainPrueba {
                 GestorBiblioteca g1 = new GestorBiblioteca();
 
                 g1.registrarUsuario(u3);
-                
-                g1.registrarUsuario(u3);
+
+                System.out.println(g1.getUsuarios());
 
 
             }

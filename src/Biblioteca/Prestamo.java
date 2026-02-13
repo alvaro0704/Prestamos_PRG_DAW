@@ -41,6 +41,26 @@ public class Prestamo {
     }
 
 
+    public String getTituloLibro() {
+        return tituloLibro;
+    }
+
+
+    public void setTituloLibro(String tituloLibro) {
+        this.tituloLibro = tituloLibro;
+    }
+
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+
     public String getCodigoLibro() {
         return codigoLibro;
     }

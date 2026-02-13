@@ -1,6 +1,10 @@
 package Biblioteca;
 
+import org.w3c.dom.ls.LSOutput;
+
+import java.sql.SQLOutput;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class GestorBiblioteca {
     private static final int max_Usuarios= 50;
@@ -19,15 +23,12 @@ public class GestorBiblioteca {
 
     public void registrarUsuario(Usuario usuarioR) throws UsuarioRepetidoException {
         for (int i = 0; i < numeroUsuario; i++){
-            if(usuarios[i].equals(usuarioR) == false){
-                usuarios[numeroUsuario]=usuarioR;
-                numeroUsuario++;
-
-            }
-            else{
+            if(usuarios[i].equals(usuarioR) ){
                 throw new UsuarioRepetidoException("El usuario esta repetido, porfavor introduzca un usuario valido");
             }
         }
+        usuarios[numeroUsuario]=usuarioR;
+        numeroUsuario++;
     }
 
     public Prestamo realizarPrestamo(String codigoLibro, String titulo, LocalDate fechaprestamo, Usuario usuario) throws PrestamoInvalidoException, UsuarioSancionadoException, LibroNoDisponibleException {
@@ -47,17 +48,51 @@ public class GestorBiblioteca {
         return prestamoIn;
     }
 
-    /*public boolean devolverlibro(String codigoLibro, LocalDate fechaDevolucion) throws PrestamoInvalidoException {
+    public boolean devolverlibro(String codigoLibro, LocalDate fechaDevolucion) throws PrestamoInvalidoException {
+
         for (int i = 0; i < numeroPrestamos; i++){
             if(prestamos[i].getCodigoLibro().equals(codigoLibro)){
                 prestamos[i].registrarDevolucion(fechaDevolucion);
+                return false;
             }
             else if(fechaDevolucion.isAfter(prestamos[i].getFechaDevolucionPrevista())){
+                int diasretraso = (int) ChronoUnit.DAYS.between(prestamos[i].getFechaDevolucionPrevista(),fechaDevolucion);
+                prestamos[i].getUsuario().sancionar(diasretraso, LocalDate.now());
+            }
+            return true;
+        }
+        return false;
+    }
 
+    public String buscarUsuario(String numeroSocio){
+        for(int i = 0; i < numeroUsuario; i++){
+            if(usuarios[i].getNumeroSocio().equals(numeroSocio)){
+                return usuarios[i].toString();
             }
         }
+        return null;
     }
-    */
+
+    public String getPrestamos(){
+        String listaPrestamos = "";
+        for(int i = 0; i < numeroPrestamos; i++){
+            listaPrestamos += prestamos[i].toString();
+        }
+        return "Prestamos acturales: " + listaPrestamos;
+    }
+
+    public String getUsuarios(){
+        String listaUsuarios = "";
+        for(int i = 0; i < numeroUsuario; i++){
+            listaUsuarios += usuarios[i].toString();
+        }
+        return "Usuarios actuales: " + listaUsuarios;
+    }
+
+    @Override
+    public String toString(){
+        return "Lista de usuarios: " + getUsuarios() + "\n" + "Lista de Prestamos: " + getPrestamos();
+    }
 
 
 
