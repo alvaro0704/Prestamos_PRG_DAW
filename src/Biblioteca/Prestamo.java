@@ -144,7 +144,7 @@ public class Prestamo {
 
     @Override
     public String toString(){
-        return "Codigo del libro: " + codigoLibro + " titulo del libro: " + tituloLibro + " socio: " + usuario + " fecha del prestamo: " + fechaPrestamo + " fecha de devolucion prevista: " + fechaDevolucionPrevista;
+        return "\n" + "\n" + "Codigo del libro: " + codigoLibro + "\n" + " titulo del libro: "  + tituloLibro + "\n"+ " socio: "  + usuario + "\n" +" fecha del prestamo: "  + fechaPrestamo +  "\n" + " fecha de devolucion prevista: "  +fechaDevolucionPrevista;
     }
 
 

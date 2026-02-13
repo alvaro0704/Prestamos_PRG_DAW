@@ -102,11 +102,11 @@ public class Usuario {
 
     public boolean estaSacionado(){
         if(sancionado==true){
-            System.out.println("EL usuario esta sancionado");
+            System.out.println("EL usuario esta sancionado" + "\n");
             return true;
         }
         else{
-            System.out.println("El usuario no esta sancionado");
+            System.out.println("El usuario no esta sancionado" + "\n");
             return false;
         }
 
@@ -114,7 +114,7 @@ public class Usuario {
 
     @Override
     public String toString(){
-        return "Nombre: " + nombre + " Email: " + email + " Numero de socio: " + numeroSocio + " fecha de registro: " + fechaRegistro;
+        return   "\n" + "Nombre: " + nombre + "\n" + " Email: " + email + "\n" + " Numero de socio: " + numeroSocio + "\n" + " fecha de registro: " + fechaRegistro + "\n" + "\n";
     }
 
 

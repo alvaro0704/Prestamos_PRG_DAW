@@ -55,7 +55,7 @@ public class GestorBiblioteca {
                 prestamos[i].registrarDevolucion(fechaDevolucion);
                 return false;
             }
-            else if(fechaDevolucion.isAfter(prestamos[i].getFechaDevolucionPrevista())){
+            if(fechaDevolucion.isAfter(prestamos[i].getFechaDevolucionPrevista())){
                 int diasretraso = (int) ChronoUnit.DAYS.between(prestamos[i].getFechaDevolucionPrevista(),fechaDevolucion);
                 prestamos[i].getUsuario().sancionar(diasretraso, LocalDate.now());
             }
@@ -70,7 +70,7 @@ public class GestorBiblioteca {
                 return usuarios[i].toString();
             }
         }
-        return null;
+        return "Usuario no encontrado";
     }
 
     public String getPrestamos(){
@@ -86,12 +86,12 @@ public class GestorBiblioteca {
         for(int i = 0; i < numeroUsuario; i++){
             listaUsuarios += usuarios[i].toString();
         }
-        return "Usuarios actuales: " + listaUsuarios;
+        return "Usuarios actuales: " + "\n" + listaUsuarios;
     }
 
     @Override
     public String toString(){
-        return "Lista de usuarios: " + getUsuarios() + "\n" + "Lista de Prestamos: " + getPrestamos();
+        return "Lista de usuarios: " + getUsuarios() + "\n" + "\n"+ "Lista de Prestamos: " + getPrestamos();
     }
 
 
