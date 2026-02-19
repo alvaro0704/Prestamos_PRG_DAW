@@ -31,6 +31,27 @@ public class GestorBiblioteca {
         numeroUsuario++;
     }
 
+
+    public void setUsuarios(Usuario[] usuarios) {
+        this.usuarios = usuarios;
+    }
+
+
+    public void setPrestamos(Prestamo[] prestamos) {
+        this.prestamos = prestamos;
+    }
+
+
+    public int getNumeroUsuario() {
+        return numeroUsuario;
+    }
+
+
+    public int getNumeroPrestamos() {
+        return numeroPrestamos;
+    }
+
+
     public Prestamo realizarPrestamo(String codigoLibro, String titulo, LocalDate fechaprestamo, Usuario usuario) throws PrestamoInvalidoException, UsuarioSancionadoException, LibroNoDisponibleException {
         Prestamo prestamoIn = new Prestamo(codigoLibro, usuario, titulo, fechaprestamo);
 
@@ -64,13 +85,13 @@ public class GestorBiblioteca {
         return false;
     }
 
-    public String buscarUsuario(String numeroSocio){
+    public Usuario buscarUsuario(String numeroSocio){
         for(int i = 0; i < numeroUsuario; i++){
             if(usuarios[i].getNumeroSocio().equals(numeroSocio)){
-                return usuarios[i].toString();
+                return usuarios[i];
             }
         }
-        return "Usuario no encontrado";
+        return null;
     }
 
     public String getPrestamos(){
