@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args)  {
+    public static void main(String[] args) throws UsuarioInvalidoException, UsuarioRepetidoException, PrestamoInvalidoException {
         Scanner in = new Scanner(System.in);
         int menu;
         GestorBiblioteca g1 = new GestorBiblioteca();
@@ -30,12 +30,79 @@ public class Main {
             String email;
             String numerosocio;
             LocalDate fecharegistro;
+
             System.out.println("Introduce el nombre del usuario: ");
+            nombre = in.nextLine();
+            System.out.println("Introduce el mail del usuario: ");
+            email = in.nextLine();
+            System.out.println("Introduce numero de socio: ");
+            numerosocio = in.nextLine();
+
+            fecharegistro= LocalDate.now();
+
+            Usuario usuario = new Usuario(nombre,email,numerosocio,fecharegistro);
+            g1.registrarUsuario(usuario);;
+        }
+
+        else if(menu == 2){
+            String codigoLibro;
+            String titulo;
+            LocalDate fechaprestamo;
+            Usuario usuario;
+            String numeroSocio;
 
 
 
-            /*Usuario u1 = new Usuario(nombre,email,numerosocio,fecharegistro);
-            System.out.println(g1.registrarUsuario(););*/
+            System.out.println("Introduce el codigo del libro: ");
+            codigoLibro = in.nextLine();
+            System.out.println("Introduce el titulo del libro: ");
+            titulo = in.nextLine();
+            System.out.println("Introduce el numero de socio del usuario: ");
+            numeroSocio = in.nextLine();
+            //usuario = g1.buscarUsuario(numeroSocio);
+            fechaprestamo= LocalDate.now();
+
+            g1.realizarPrestamo(codigoLibro,titulo,fechaprestamo,usuario);
+
+        }
+
+        else if(menu == 3){
+            String codigoLibro;
+            LocalDate fechaDevolucion;
+
+            System.out.println("Introduce el codigo del libro a devolver: ");
+            codigoLibro = in.nextLine();
+            fechaDevolucion = LocalDate.now();
+
+            if(g1.devolverlibro(codigoLibro,fechaDevolucion)==true){
+                System.out.println("Libro devuelto correctamente");
+            }
+            else{
+                System.out.println("Error");
+            }
+
+        }
+
+        else if(menu == 4){
+            String resultado;
+            String numeroSocio;
+            System.out.println("Introduce el nombre del usuario:");
+            numeroSocio = in.nextLine();
+
+            resultado = g1.buscarUsuario(numeroSocio);
+
+        }
+
+        else if(menu == 5){
+            System.out.println(g1.getPrestamos());
+        }
+
+        else if(menu == 6){
+            System.out.println(g1.getUsuarios());
+        }
+
+        else if(menu == 7){
+
         }
 
 
