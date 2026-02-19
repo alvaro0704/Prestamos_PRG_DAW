@@ -42,6 +42,8 @@ public class Main {
 
                         Usuario usuario = new Usuario(nombre, email, numerosocio, fecharegistro);
                         g1.registrarUsuario(usuario);
+
+                        System.out.println("Usuario registrado correctamente");
                     }catch (UsuarioInvalidoException UIE){
                         System.out.println(UIE.getMessage());
                     }
@@ -76,9 +78,9 @@ public class Main {
                     fechaDevolucion = LocalDate.now();
 
                     if (g1.devolverlibro(codigoLibro, fechaDevolucion)) {
-                        System.out.println("Libro devuelto correctamente");
+                        System.out.println("error, ese libro no esta registrado como prestado");
                     } else {
-                        System.out.println("Error");
+                        System.out.println("Libro devuelto corretamente");
                     }
 
                 } else if (menu == 4) {
