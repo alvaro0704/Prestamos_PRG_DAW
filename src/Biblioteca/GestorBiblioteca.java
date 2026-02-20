@@ -37,6 +37,7 @@ public class GestorBiblioteca {
     }
 
 
+
     public void setPrestamos(Prestamo[] prestamos) {
         this.prestamos = prestamos;
     }
@@ -94,20 +95,20 @@ public class GestorBiblioteca {
         return null;
     }
 
-    public String getPrestamos(){
-        String listaPrestamos = "";
+    public Prestamo[] getPrestamos(){
+        Prestamo[] listaPrestamos = new Prestamo[numeroPrestamos] ;
         for(int i = 0; i < numeroPrestamos; i++){
-            listaPrestamos += prestamos[i].toString();
+            listaPrestamos[i]= prestamos[i];
         }
-        return "Prestamos acturales: " + listaPrestamos;
+        return listaPrestamos;
     }
 
-    public String getUsuarios(){
-        String listaUsuarios = "";
+    public Usuario[] getUsuarios(){
+        Usuario[] listaUsuarios=new Usuario[numeroUsuario];
         for(int i = 0; i < numeroUsuario; i++){
-            listaUsuarios += usuarios[i].toString();
+            listaUsuarios[i] = usuarios[i];
         }
-        return "Usuarios actuales: " + "\n" + listaUsuarios;
+        return listaUsuarios;
     }
 
     @Override

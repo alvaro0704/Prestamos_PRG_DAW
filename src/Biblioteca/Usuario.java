@@ -102,11 +102,11 @@ public class Usuario {
 
     public boolean estaSacionado(){
         if(sancionado==true){
-            System.out.println("EL usuario esta sancionado" + "\n");
+
             return true;
         }
         else{
-            System.out.println("El usuario no esta sancionado" + "\n");
+
             return false;
         }
 
