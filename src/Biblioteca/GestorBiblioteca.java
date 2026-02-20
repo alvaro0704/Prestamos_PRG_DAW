@@ -67,6 +67,7 @@ public class GestorBiblioteca {
         }
         prestamos[numeroPrestamos] = prestamoIn;
         numeroPrestamos++;
+        System.out.println("Fecha devolucion prevista: " + prestamoIn.getFechaDevolucionPrevista());
         return prestamoIn;
     }
 
@@ -104,7 +105,7 @@ public class GestorBiblioteca {
     }
 
     public Usuario[] getUsuarios(){
-        Usuario[] listaUsuarios=new Usuario[numeroUsuario];
+        Usuario[] listaUsuarios= new Usuario[numeroUsuario];
         for(int i = 0; i < numeroUsuario; i++){
             listaUsuarios[i] = usuarios[i];
         }

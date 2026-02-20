@@ -31,7 +31,7 @@ public class Prestamo {
         }
 
         if(fechaPrestamo==null || fechaPrestamo.isBefore(fechaActual)){
-            throw new PrestamoInvalidoException("El valor de la fecha no puede estar vacio, ni se anterior a la fecha actual");
+            throw new PrestamoInvalidoException("El valor de la fecha no puede estar vacio, ni ser anterior a la fecha actual");
         }
         else{
             this.fechaPrestamo=fechaPrestamo;

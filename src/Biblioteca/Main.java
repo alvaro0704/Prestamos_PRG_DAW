@@ -1,6 +1,8 @@
 package Biblioteca;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -38,6 +40,7 @@ public class Main {
                         System.out.println("Introduce numero de socio: ");
                         numerosocio = in.nextLine();
 
+
                         fecharegistro = LocalDate.now();
 
                         Usuario usuario = new Usuario(nombre, email, numerosocio, fecharegistro);
@@ -55,12 +58,8 @@ public class Main {
 
                         String codigoLibro;
                         String titulo;
-                        LocalDate fechaprestamo;
                         Usuario usuario;
                         String numeroSocio;
-
-
-
 
                         System.out.println("Introduce el codigo del libro: ");
                         codigoLibro = in.nextLine();
@@ -69,14 +68,18 @@ public class Main {
                         System.out.println("Introduce el numero de socio del usuario: ");
                         numeroSocio = in.nextLine();
 
+                        System.out.println("Introduce la fecha del préstamo dd/MM/yyyy: ");
+                        String fechaTexto = in.nextLine();
+
                         usuario = g1.buscarUsuario(numeroSocio);
 
-                        fechaprestamo = LocalDate.now();
+                        DateTimeFormatter f1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                        LocalDate fechaprestamo = LocalDate.parse(fechaTexto, f1);
 
-                        g1.realizarPrestamo(codigoLibro, titulo, fechaprestamo, usuario);
+                        Prestamo p1 = g1.realizarPrestamo(codigoLibro, titulo, fechaprestamo, usuario);
 
                         System.out.println("Prestamo realizado");
-                        System.out.println("Devolución prevista: " + g1.realizarPrestamo(codigoLibro, titulo, fechaprestamo, usuario).getFechaDevolucionPrevista());
+
 
                     }
                     catch (LibroNoDisponibleException LNDE) {
@@ -124,7 +127,7 @@ public class Main {
 
                 } else if (menu == 5) {
 
-                    System.out.println(g1.getPrestamos());
+                    System.out.println("LISTA DE PRESTAMOS ACTIVOS" + Arrays.toString(g1.getPrestamos()));
 
                 } else if (menu == 6) {
 
